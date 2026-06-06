@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mera Laundry – Premium Laundry Service | 5 Lakh+ Happy Customers</title>
+  <meta name="description" content="Mera Laundry offers premium laundry services with FREE pick & drop across 10+ cities. Trusted by 5 Lakh+ customers. Book now!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<style>
+    /* Full-Screen Preloader Curtain */
+    #premium-preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #FFFFFF;
+        z-index: 999999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* The Center Stage for the Icons */
+    .loader-icon-center {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 25px;
+    }
+    
+    /* Stack all icons perfectly on top of each other */
+    .load-icon-seq {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #E86A10;
+        /* GSAP Initial State */
+        opacity: 0;
+        transform: scale(0.5); 
+    }
+
+
+    /* Premium Hover Lift for Cards */
+    .pricing-card, .step-card, .service-card {
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        will-change: transform;
+    }
+
+    .pricing-card:hover, .step-card:hover, .service-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 50px rgba(232, 106, 16, 0.08), 0 10px 20px rgba(0, 0, 0, 0.04);
+        /* If your cards have borders, this softly highlights them in brand orange */
+        border-color: rgba(232, 106, 16, 0.2); 
+    }
+</style>
+
+<div id="premium-preloader">
+    <div class="loader-icon-center">
+        <!-- 1. Cloth / T-Shirt -->
+        <div class="load-icon-seq" id="seq-1">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a8 8 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+        </div>
+        <!-- 2. Sleeker Washing Machine with Spinning Drum -->
+        <div class="load-icon-seq" id="seq-2">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Outer Machine -->
+                <rect x="4" y="3" width="16" height="19" rx="2" ry="2"></rect>
+                <!-- Top Control Panel -->
+                <line x1="4" y1="7" x2="20" y2="7"></line>
+                <circle cx="7" cy="5" r="0.5" fill="currentColor"></circle>
+                <circle cx="9" cy="5" r="0.5" fill="currentColor"></circle>
+                <!-- Inner Spinning Drum -->
+                <g id="washing-drum">
+                    <circle cx="12" cy="14" r="5"></circle>
+                    <path d="M12 11.5a2.5 2.5 0 0 0-2.5 2.5"></path>
+                </g>
+            </svg>
+        </div>
+        <!-- 3. Hanger -->
+        <div class="load-icon-seq" id="seq-3">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9V6a2 2 0 0 0-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2v3"></path><path d="m5 15 7-6 7 6"></path><path d="M4 15h16"></path></svg>
+        </div>
+        <!-- 4. Delivery Truck -->
+        <div class="load-icon-seq" id="seq-4">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        </div>
+    </div>
+
+</div>
+
+
+
+  <!-- ═══════════════════════════════════════════════
+       TIER 2 — Main Navigation Bar
+  ═══════════════════════════════════════════════ -->
+  <header class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+
+      <!-- Brand / Logo -->
+      <a href="/" class="navbar__brand" aria-label="Mera Laundry – Home">
+        <div class="brand-icon" aria-hidden="true">
+          <span class="brand-icon__text">ml</span>
+        </div>
+        <span class="brand-name">MERA LAUNDRY</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="navbar__links" aria-label="Site navigation">
+        <div onclick="openCityModal()" style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer; margin-right: 20px; font-weight: 700; color: #1F2937; padding: 8px 16px; background: #FFF4EC; border-radius: 20px; border: 1px solid #FFE4D6; transition: all 0.2s ease;">
+    <svg width="16" height="16" fill="none" stroke="#E86A10" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+    Bengaluru
+</div>
+        <a href="#login"     id="nav-login"     class="nav-link">Login</a>
+        <a href="#join-us"   id="nav-join-us"   class="nav-link">Join Us</a>
+        <a href="#franchise" id="nav-franchise"  class="nav-link">Apply Franchise</a>
+        <a href="#status"    id="nav-status"     class="nav-link">Order Status</a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button
+        class="hamburger"
+        id="hamburger-btn"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="menu">
+      <a href="#login"     role="menuitem" class="mobile-link" id="mob-login">Login</a>
+      <a href="#join-us"   role="menuitem" class="mobile-link" id="mob-join-us">Join Us</a>
+      <a href="#franchise" role="menuitem" class="mobile-link" id="mob-franchise">Apply Franchise</a>
+      <a href="#status"    role="menuitem" class="mobile-link" id="mob-status">Order Status</a>
+      <a href="#book-now"  role="menuitem" class="mobile-link mobile-link--book magnetic-btn book-now-trigger" id="mob-book">Book Now</a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       DEMO HERO SECTION  (shows the header in context)
+  ═══════════════════════════════════════════════ -->
+  <main>
+    <div id="hero-wrapper">
+      <section class="hero" id="book-now">
+      <div class="hero__content">
+        <div class="hero__badge">India's Most Trusted Laundry</div>
+        <h1 class="hero__title">
+          Fresh &amp; Clean, <br />
+          <span class="hero__title--accent">Delivered to You</span>
+        </h1>
+        <p class="hero__subtitle">
+          Premium laundry &amp; dry-cleaning with FREE pick &amp; drop across 10+ cities.
+          Join 5 Lakh+ happy customers today.
+        </p>
+        <div class="hero__actions">
+          <a href="#book-now" id="hero-book-btn" class="btn btn--book-hero magnetic-btn book-now-trigger">Book Now  </a>
+          <a href="#learn-more" id="hero-learn-btn" class="btn btn--ghost">Learn More</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat-item">
+              <h3 class="stat-number"><span id="customer-count">0</span>+</h3>
+              <p class="stat-label">CUSTOMERS</p>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat-item">
+              <h3 class="stat-number"><span id="city-count">0</span>+</h3>
+              <p class="stat-label">CITIES</p>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat-item">
+            <h3 class="stat-number"><span id="text-free" style="display:inline-block; opacity:0; transform:translateY(10px);">FREE</span></h3>
+            <p class="stat-label">Pick &amp; Drop</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative floating bubbles -->
+      <div class="hero__bubbles" aria-hidden="true">
+        <div class="bubble bubble--1"></div>
+        <div class="bubble bubble--2"></div>
+        <div class="bubble bubble--3"></div>
+      </div>
+
+      <!-- Washing Machine Graphic -->
+<style>
+    /* Premium Booking Modal */
+    .booking-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.6); /* Dark slate glassmorphism */
+        backdrop-filter: blur(8px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .booking-modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .booking-modal-content {
+        background: #FFFFFF;
+        width: 90%;
+        max-width: 550px;
+        border-radius: 24px;
+        padding: 40px;
+        position: relative;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        transform: translateY(30px) scale(0.95);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .booking-modal-overlay.active .booking-modal-content {
+        transform: translateY(0) scale(1);
+    }
+
+    .close-modal-btn {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        background: none;
+        border: none;
+        font-size: 28px;
+        color: #6B7280;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .close-modal-btn:hover {
+        color: #E86A10;
+    }
+
+    .modal-header h2 {
+        color: #1F2937;
+        font-size: 28px;
+        margin-bottom: 5px;
+        font-weight: 800;
+    }
+
+    .modal-header p {
+        color: #6B7280;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .booking-form .form-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .booking-form .form-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .booking-form .full-width {
+        flex: 100%;
+    }
+
+    .booking-form label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #374151;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .booking-form input, .booking-form select {
+        padding: 12px 16px;
+        border: 1.5px solid #E5E7EB;
+        border-radius: 10px;
+        font-size: 14px;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .booking-form input:focus, .booking-form select:focus {
+        border-color: #E86A10;
+        box-shadow: 0 0 0 3px rgba(232, 106, 16, 0.1);
+    }
+
+    .submit-booking-btn {
+        width: 100%;
+        background: #10B981; /* Brand green */
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 16px;
+        border: none;
+        border-radius: 12px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .submit-booking-btn:hover {
+        background: #0D9488;
+    }
+
+    /* Pro-Level Estimate Badge */
+    .delivery-estimate-badge {
+        margin-top: 15px;
+        padding: 14px 18px;
+        background: #F3F4F6; /* Soft tech gray */
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #E5E7EB;
+        transition: all 0.3s ease;
+    }
+
+    .estimate-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #4B5563;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .estimate-value {
+        font-size: 13px;
+        font-weight: 700;
+        color: #9CA3AF;
+        background: #FFFFFF;
+        padding: 6px 12px;
+        border-radius: 20px; /* Creates the sleek pill shape */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    /* Active State (When a service is selected) */
+    .delivery-estimate-badge.active-estimate {
+        background: #FFF4EC;
+        border-color: rgba(232, 106, 16, 0.2);
+    }
+
+    .delivery-estimate-badge.active-estimate .estimate-value {
+        color: #E86A10;
+        background: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(232, 106, 16, 0.15); /* Soft orange glow */
+    }
+    
+    .delivery-estimate-badge.active-estimate svg {
+        stroke: #E86A10; /* Colors the icon orange */
+    }
+
+    /* Premium Smart Washer Container */
+    .premium-washer-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: 0; 
+        perspective: 1000px;
+        
+        /* Flex setup to stack the machines perfectly */
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        
+        /* Scaled down further so the vertical stack fits elegantly inside the hero area */
+        transform: scale(0.65) translate(40px, -40px);
+        
+        transform-origin: center right; 
+    }
+
+    .smart-washer {
+        width: 100%;
+        /* Premium light brand-tinted glass surface */
+        background: linear-gradient(145deg, #FFFFFF, #FFF4EC); 
+        border: 2px solid rgba(232, 106, 16, 0.15);
+        box-shadow: 0 30px 60px rgba(232, 106, 16, 0.08), inset 0 2px 10px rgba(255, 255, 255, 1);
+        border-radius: 30px;
+        padding: 40px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+    }
+
+    /* Top Digital Control Panel */
+    .washer-panel {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+        padding: 0 10px;
+    }
+
+    .panel-dots {
+        display: flex;
+        gap: 10px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #F3F4F6;
+        transition: all 0.3s ease;
+    }
+
+    .dot.active {
+        background: #E86A10;
+        box-shadow: 0 0 12px rgba(232, 106, 16, 0.6);
+    }
+
+    /* 1. Soften the digital display so it isn't a harsh black box */
+    .digital-display {
+        background: #FFF4EC; /* Soft brand background */
+        color: #E86A10; /* Brand orange text */
+        font-family: monospace;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 8px 18px;
+        border-radius: 8px;
+        letter-spacing: 2px;
+        border: 1px solid rgba(232, 106, 16, 0.2); /* Delicate outline */
+        box-shadow: none;
+    }
+
+    /* 2. Ditch the submarine window for a sleek, frosted glass rim */
+    .washer-door {
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: #F9FAFB;
+        /* Replaced the 20px dark border with a refined, multi-layered silver edge */
+        border: 12px solid #FFFFFF; 
+        box-shadow: 
+            0 0 0 1px #E5E7EB, /* Ultra-thin outer silver ring */
+            inset 0 0 0 1px #E5E7EB, /* Ultra-thin inner silver ring */
+            inset 0 15px 30px rgba(0,0,0,0.06); /* Soft inner glass depth */
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Inner Glass Glare Reflection */
+    .washer-door::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 60%);
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* CSS Fluid Water Effect */
+    .drum-water {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: rgba(56, 189, 248, 0.15); /* Light blue */
+        border-radius: 40%;
+        bottom: -130%;
+        animation: washSpin 7s infinite linear;
+        z-index: 1;
+    }
+
+    .drum-water-2 {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: rgba(14, 165, 233, 0.25); /* Darker blue */
+        border-radius: 45%;
+        bottom: -140%;
+        animation: washSpin 5s infinite linear reverse;
+        z-index: 2;
+    }
+
+    /* Internal Drum Branding */
+    .drum-brand-text {
+        position: absolute;
+        z-index: 5; /* Ensures it sits on top of the water layers */
+        color: #E86A10; /* Brand Orange */
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-align: center;
+        /* Adds a soft white glow so the blue water doesn't drown out the text */
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+
+    .washer-smile {
+        position: absolute;
+        z-index: 5;
+        bottom: 70px; /* Pushes it just below the text */
+        opacity: 0.8;
+        /* Adds the same soft glow as the text */
+        filter: drop-shadow(0px 0px 5px rgba(255,255,255,0.8)); 
+    }
+
+    @keyframes washSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Floating UI Badges */
+    .floating-badge {
+        position: absolute;
+        background: #FFFFFF;
+        padding: 12px 24px;
+        border-radius: 50px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        color: #1F2937;
+        font-size: 15px;
+        z-index: 5;
+    }
+
+    .badge-left {
+        bottom: 50px;
+        left: -50px;
+    }
+
+    .badge-right {
+        top: 80px;
+        right: -40px;
+    }
+
+    .badge-icon {
+        width: 28px;
+        height: 28px;
+        background: #FFF4EC;
+        color: #E86A10;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+    
+    /* Responsive adjustment for mobile */
+    @media (max-width: 768px) {
+        .badge-left, .badge-right { display: none; }
+    }
+
+    /* Hero Image Arrangement */
+    .hero-image-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 550px; /* Keeps the image from getting too massive on wide screens */
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Optional: Adds a soft, glowing backdrop to make the image pop */
+        background: radial-gradient(circle, rgba(232,106,16,0.05) 0%, rgba(255,255,255,0) 70%);
+    }
+
+    /* The Antigravity Float */
+    .antigravity-hero-img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.1)); /* Adds realistic depth */
+        animation: antigravityFloat 4s ease-in-out infinite;
+    }
+
+    /* The Physics of the Float */
+    @keyframes antigravityFloat {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px); /* Floats up smoothly */
+        }
+        100% {
+            transform: translateY(0px); /* Settles back down */
+        }
+    }
+</style>
+
+<!-- The Antigravity Hero Image Container -->
+<div class="hero-image-wrapper">
+    <img src="antigravity-image.png" alt="Premium Laundry Floating in Zero Gravity" class="antigravity-hero-img">
+</div>
+    </section>
+  </div>
+
+  <style>
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .service-card {
+        background: #FFFFFF;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        padding: 40px 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        /* Start hidden for GSAP */
+        opacity: 0; 
+        transform: translateY(50px);
+    }
+    .service-card:hover {
+        transform: translateY(-12px) !important;
+        border-color: #E86A10;
+        box-shadow: 0 20px 40px rgba(232, 106, 16, 0.15);
+    }
+    .icon-wrap {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #FFF4EC;
+        color: #E86A10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 24px;
+    }
+    .card-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1F2937;
+        margin-bottom: 8px;
+    }
+    .price-wrap {
+        font-size: 14px;
+        color: #6B7280;
+        margin-bottom: 15px;
+    }
+    .price-bold {
+        font-size: 28px;
+        font-weight: 900;
+        color: #E86A10;
+    }
+    .time-wrap {
+        font-size: 13px;
+        color: #9CA3AF;
+        font-weight: 500;
+    }
+    .popular-badge {
+        position: absolute;
+        top: 20px;
+        right: -35px;
+        background: #E86A10;
+        color: white;
+        font-size: 10px;
+        font-weight: 800;
+        padding: 6px 40px;
+        transform: rotate(45deg);
+        letter-spacing: 1px;
+        box-shadow: 0 4px 10px rgba(232, 106, 16, 0.3);
+    }
+    .most-popular {
+        border-color: rgba(232, 106, 16, 0.2);
+    }
+    .card-action {
+        margin-top: 20px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #10B981;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+    .service-card:hover .card-action {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  </style>
+
+  <section id="pricing-services" style="position: relative; z-index: 10; background-color: #FAFAFA; padding: 80px 5%; min-height: 100vh;">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-size: 32px; color: #1F2937; font-weight: 800; margin-bottom: 10px;">PRICING & SERVICES</h2>
+        <div style="width: 60px; height: 4px; background: #E86A10; margin: 0 auto; border-radius: 2px;"></div>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card reveal-up" id="card-wash-fold">
+            <div class="icon-wrap" style="position: relative; display: flex; align-items: center; justify-content: center;">
+                
+                <!-- 1. Your existing T-Shirt SVG -->
+                <svg class="anim-tshirt" style="position: absolute;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.38 3.46L16 2a8 8 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+                </svg>
+
+                <!-- 2. New Washing Machine SVG -->
+                <svg class="anim-machine" style="position: absolute; opacity: 0;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                    <circle cx="12" cy="14" r="4"></circle>
+                    <path d="M8 6h.01"></path>
+                    <path d="M16 6h.01"></path>
+                </svg>
+
+                <!-- 3. New Folded Clothes SVG -->
+                <svg class="anim-folded" style="position: absolute; opacity: 0;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                </svg>
+
+            </div>
+            <div class="card-title">Wash & Fold</div>
+            <div class="price-wrap">Starts @ <span class="price-bold">₹69</span>/kg</div>
+            <div class="time-wrap">🕒 48-72 hrs</div>
+            <div class="card-action book-now-trigger">Book Now ➔</div>
+        </div>
+
+        <div class="service-card most-popular reveal-up" id="card-wash-iron">
+            <div class="popular-badge">MOST POPULAR</div>
+            <div class="icon-wrap" style="position: relative; display: flex; align-items: center; justify-content: center;">
+                
+                <!-- 1. Your existing Wash & Iron Logo SVG -->
+                <svg class="anim-default-iron" style="position: absolute;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Folded Clothes Stack -->
+                    <rect x="4" y="15" width="16" height="3" rx="1"></rect>
+                    <rect x="5" y="18" width="14" height="3" rx="1"></rect>
+                    <rect x="6" y="21" width="12" height="2" rx="1"></rect>
+                    
+                    <!-- Shirt Collar Detail (Top layer) -->
+                    <path d="M10 15l2 1.5 2-1.5"></path>
+
+                    <!-- Iron Body Resting on Clothes -->
+                    <path d="M5 15h13v-4a3 3 0 0 0-3-3H9C6 8 5 11.5 5 15z" fill="#FFFFFF"></path>
+                    
+                    <!-- Iron Handle Cutout -->
+                    <rect x="9" y="10.5" width="5" height="1.5" rx="0.75"></rect>
+                    
+                    <!-- Squiggly Iron Cord -->
+                    <path d="M18 9c1.5-1 3 0 3-2s-1-2 0-3"></path>
+                </svg>
+
+                <!-- 2. Same Washing Machine SVG -->
+                <svg class="anim-machine-iron" style="position: absolute; opacity: 0;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                    <circle cx="12" cy="14" r="4"></circle>
+                    <path d="M8 6h.01"></path>
+                    <path d="M16 6h.01"></path>
+                </svg>
+
+                <!-- 3. New Steaming Iron SVG -->
+                <svg class="anim-steam-iron" style="position: absolute; opacity: 0;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 16h16l-3-6H9c-3 0-4.5 3-5 6z"></path>
+                    <path d="M8 10V6h6v4"></path>
+                    <path d="M6 20v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="M18 20v2"></path>
+                </svg>
+
+            </div>
+            <div class="card-title">Wash & Iron</div>
+            <div class="price-wrap">Starts @ <span class="price-bold">₹99</span>/kg</div>
+            <div class="time-wrap">🕒 48-72 hrs</div>
+            <div class="card-action book-now-trigger">Book Now ➔</div>
+        </div>
+
+        <div class="service-card reveal-up" id="card-express">
+            <div class="icon-wrap" style="position: relative; display: flex; align-items: center; justify-content: center;">
+                
+                <!-- 1. Your existing Express Logo SVG -->
+                <svg class="anim-default-express" style="position: absolute;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Stopwatch Body -->
+                    <circle cx="12" cy="13" r="8"></circle>
+                    <!-- Top Button -->
+                    <path d="M12 2v3"></path>
+                    <path d="M10 2h4"></path>
+                    <!-- Lightning Bolt Inside -->
+                    <path d="M13 9l-3 4h3l-1 4 4-5h-3l2-3z"></path>
+                </svg>
+
+                <!-- 2. New Clock SVG -->
+                <svg class="anim-ticking-clock" style="position: absolute; opacity: 0;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+
+                <!-- 3. New Lightning Bolt / Speed Flash SVG -->
+                <svg class="anim-lightning-flash" style="position: absolute; opacity: 0;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+
+            </div>
+            <div class="card-title">Express Laundry</div>
+            <div class="price-wrap">Starts @ <span class="price-bold">₹149</span>/kg</div>
+            <div class="time-wrap">🕒 24 hrs</div>
+            <div class="card-action book-now-trigger">Book Now ➔</div>
+        </div>
+
+        <div class="service-card reveal-up" id="card-dry-clean">
+            <div class="icon-wrap" style="position: relative; display: flex; align-items: center; justify-content: center;">
+                
+                <svg class="anim-default-dry" style="position: absolute;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Hanger Hook -->
+                    <path d="M12 7a2 2 0 0 0-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2v2"></path>
+                    <!-- Jacket Shoulders & Body -->
+                    <path d="M4 10l8-3 8 3v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10z"></path>
+                    <!-- Lapel / V-Neck -->
+                    <path d="M8 10l4 6 4-6"></path>
+                    <!-- Center Line -->
+                    <line x1="12" y1="16" x2="12" y2="22"></line>
+                </svg>
+
+                <svg class="anim-suit-jacket" style="position: absolute; opacity: 0;" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a2 2 0 0 1 2 2c0 1-1 1-1 2"></path>
+                    <path d="M5 9c0-1.5 3-4 7-4s7 2.5 7 4l-2 13H7L5 9z"></path>
+                    <path d="M12 9v13"></path>
+                    <path d="M9 9l3 4 3-4"></path>
+                </svg>
+
+            </div>
+            <div class="card-title">Dry Cleaning</div>
+            <div class="price-wrap">Starts @ <span class="price-bold">₹59</span>/piece</div>
+            <div class="time-wrap">🕒 48-72 hrs</div>
+            <div class="card-action book-now-trigger">Book Now ➔</div>
+        </div>
+    </div>
+  </section>
+
+  <style>
+    #we-promise {
+        background-color: #FFFFFF;
+        padding: 100px 5%;
+        overflow: hidden;
+    }
+    .promise-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .promise-content {
+        flex: 1;
+        min-width: 300px;
+    }
+    .promise-header {
+        font-size: 32px;
+        color: #1F2937;
+        font-weight: 800;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    .promise-divider {
+        width: 60px;
+        height: 4px;
+        background: #E86A10;
+        border-radius: 2px;
+        margin-bottom: 40px;
+    }
+    .promise-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 30px;
+        /* GSAP Initial State */
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    .promise-icon {
+        width: 50px;
+        height: 50px;
+        background: #FFF4EC;
+        color: #E86A10;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .promise-text h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1F2937;
+        margin: 0 0 5px 0;
+    }
+    .promise-text p {
+        font-size: 15px;
+        color: #6B7280;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .promise-image-wrapper {
+        flex: 1;
+        min-width: 300px;
+        position: relative;
+        /* GSAP Initial State */
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    .promise-image-wrapper img {
+        width: 100%;
+        height: auto;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        object-fit: cover;
+    }
+    /* Decorative accent behind the image */
+    .promise-image-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        border: 2px dashed #E86A10;
+        z-index: -1;
+    }
+  </style>
+
+  <section id="we-promise">
+    <div class="promise-container">
+        <div class="promise-content">
+            <h2 class="promise-header">We Promise You</h2>
+            <div class="promise-divider"></div>
+
+            <div class="promise-item">
+                <div class="promise-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="promise-text">
+                    <h4>Free pick & drop</h4>
+                    <p>We provide Free pick & drop facility at your doorstep.</p>
+                </div>
+            </div>
+
+            <div class="promise-item">
+                <div class="promise-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <div class="promise-text">
+                    <h4>Affordable</h4>
+                    <p>Our pricing policy is fair & transparent. What you see is what you pay!</p>
+                </div>
+            </div>
+
+            <div class="promise-item">
+                <div class="promise-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div class="promise-text">
+                    <h4>Quality assurance</h4>
+                    <p>We strive to give the best laundry & dry cleaning experience.</p>
+                </div>
+            </div>
+
+            <div class="promise-item">
+                <div class="promise-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div class="promise-text">
+                    <h4>Convenience</h4>
+                    <p>Book your service in less than 20 seconds.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="promise-image-wrapper">
+            <img src="assets/mera-laundry-storefront.jpg" alt="Mera Laundry Storefront">
+        </div>
+    </div>
+  </section>
+
+  <style>
+    #how-it-works {
+        background-color: #FAFAFA;
+        padding: 100px 5%;
+        text-align: center;
+        overflow: hidden;
+    }
+    .hiw-header {
+        font-size: 32px;
+        color: #1F2937;
+        font-weight: 800;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    .hiw-divider {
+        width: 60px;
+        height: 4px;
+        background: #E86A10;
+        border-radius: 2px;
+        margin: 0 auto 50px auto;
+    }
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .step-card {
+        background: #FFFFFF;
+        border: 2px solid transparent;
+        border-radius: 24px;
+        padding: 50px 20px;
+        position: relative;
+        z-index: 2;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        /* GSAP Initial State */
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    /* The Premium Watermark Number */
+    .step-number-watermark {
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        font-size: 100px;
+        font-weight: 900;
+        color: rgba(232, 106, 16, 0.05);
+        z-index: -1;
+        transition: all 0.4s ease;
+        pointer-events: none;
+    }
+    .step-card:hover {
+        transform: translateY(-12px) !important;
+        border-color: #E86A10;
+        box-shadow: 0 20px 40px rgba(232, 106, 16, 0.12);
+    }
+    .step-card:hover .step-number-watermark {
+        color: rgba(232, 106, 16, 0.1);
+        transform: scale(1.1) rotate(5deg);
+    }
+    .step-icon-wrap {
+        width: 80px;
+        height: 80px;
+        background: #FFF4EC;
+        color: #E86A10;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+    }
+    .step-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #1F2937;
+        margin: 0;
+    }
+    
+    /* Connecting Arrows for Desktop Desktop */
+    @media (min-width: 992px) {
+        .step-card:not(:last-child)::after {
+            content: '➔';
+            position: absolute;
+            top: 50%;
+            right: -25px;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: rgba(232, 106, 16, 0.4);
+            z-index: 10;
+        }
+    }
+  </style>
+
+  <section id="how-it-works">
+    <h2 class="hiw-header">How It Works</h2>
+    <div class="hiw-divider"></div>
+
+    <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card reveal-up">
+            <div class="step-number-watermark">1</div>
+            <div class="step-icon-wrap">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="3" ry="3"></rect>
+                    <path d="M12 18h.01"></path>
+                    <path d="M9 11l2 2 4-4"></path>
+                </svg>
+            </div>
+            <h3 class="step-title">Book Order</h3>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card reveal-up">
+            <div class="step-number-watermark">2</div>
+            <div class="step-icon-wrap">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- The Door Frame -->
+                    <rect x="4" y="3" width="16" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="12" x2="16" y2="12"></line>
+                    <!-- The Laundry Basket -->
+                    <path d="M7 15l1.5 6h7l1.5-6"></path>
+                    <path d="M6 15h12"></path>
+                    <!-- Laundry Items inside Basket -->
+                    <path d="M8 15v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <path d="M10 13l1-1 1 1"></path>
+                    <path d="M13 13l1-1 1 1"></path>
+                </svg>
+            </div>
+            <h3 class="step-title">Pickup at Doorstep</h3>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card reveal-up">
+            <div class="step-number-watermark">3</div>
+            <div class="step-icon-wrap">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <path d="M3 9h18"></path>
+                    <path d="M14 6h4"></path>
+                    <circle cx="6" cy="6" r="1"></circle>
+                    <circle cx="12" cy="15" r="4"></circle>
+                </svg>
+            </div>
+            <h3 class="step-title">Process</h3>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card reveal-up">
+            <div class="step-number-watermark">4</div>
+            <div class="step-icon-wrap">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"></path>
+                    <path d="M14 9h4l4 4v5c0 .6-.4 1-1 1h-2"></path>
+                    <circle cx="7" cy="18" r="2"></circle>
+                    <circle cx="17" cy="18" r="2"></circle>
+                    <!-- Motion Lines -->
+                    <line x1="2" y1="11" x2="4" y2="11"></line>
+                    <line x1="1" y1="15" x2="3" y2="15"></line>
+                </svg>
+            </div>
+            <h3 class="step-title">Delivery at Doorstep</h3>
+        </div>
+    </div>
+  </section>
+
+  <style>
+    #testimonial {
+        background-color: #FFFFFF;
+        padding: 80px 5%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .slider-wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        overflow: hidden; /* Crucial: Hides the off-screen slides */
+        /* GSAP Initial State */
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    .testimonial-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Buttery smooth slide */
+    }
+    .testimonial-slide {
+        min-width: 100%; /* Forces each slide to take up the full wrapper */
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+    .quote-icon {
+        font-size: 60px;
+        color: rgba(232, 106, 16, 0.2);
+        line-height: 1;
+        margin-bottom: 10px;
+        font-family: serif;
+    }
+    .testimonial-text {
+        font-size: 22px;
+        color: #374151;
+        font-style: italic;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        font-weight: 500;
+    }
+    .star-rating {
+        color: #F59E0B;
+        font-size: 20px;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+    .author-name {
+        font-size: 18px;
+        font-weight: 800;
+        color: #1F2937;
+        margin: 0;
+    }
+    .author-title {
+        font-size: 14px;
+        color: #6B7280;
+        margin-top: 5px;
+    }
+
+    /* Interactive Navigation Dots */
+    .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 40px;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #E5E7EB;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .dot.active {
+        background: #E86A10;
+        transform: scale(1.4);
+    }
+  </style>
+
+  <section id="testimonial">
+    <div class="slider-wrapper">
+        <div class="testimonial-track" id="testi-track">
+            
+            <!-- Slide 1 -->
+            <div class="testimonial-slide">
+                <div class="quote-icon">❝</div>
+                <div class="star-rating">★★★★★</div>
+                <p class="testimonial-text">"Between back-to-back meetings and the daily commute, doing laundry was my biggest headache. Mera Laundry completely changed the game. Their free pickup is always exactly on time."</p>
+                <h4 class="author-name">Vikram K.</h4>
+                <div class="author-title">Regular Customer</div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="testimonial-slide">
+                <div class="quote-icon">❝</div>
+                <div class="star-rating">★★★★★</div>
+                <p class="testimonial-text">"Working late shifts in Koramangala means I have zero energy for chores. The doorstep delivery is incredibly reliable, and my formal wear always comes back smelling amazing and looking brand new."</p>
+                <h4 class="author-name">Priya S.</h4>
+                <div class="author-title">Software Engineer</div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="testimonial-slide">
+                <div class="quote-icon">❝</div>
+                <div class="star-rating">★★★★★</div>
+                <p class="testimonial-text">"I was skeptical about sending my expensive silk garments for dry cleaning, but they handled them with such care. The express 24-hour turnaround is unmatched in the city."</p>
+                <h4 class="author-name">Anjali R.</h4>
+                <div class="author-title">Local Business Owner</div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="slider-dots">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+            <div class="dot" onclick="goToSlide(2)"></div>
+        </div>
+    </div>
+  </section>
+
+  <style>
+    #faq-section {
+        background-color: #FAFAFA;
+        padding: 100px 5%;
+    }
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .faq-header {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 800;
+        color: #1F2937;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    .faq-divider {
+        width: 60px;
+        height: 4px;
+        background: #E86A10;
+        margin: 0 auto 50px auto;
+        border-radius: 2px;
+    }
+    .faq-item {
+        background: #FFFFFF;
+        border-radius: 16px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        overflow: hidden;
+        /* GSAP Initial State */
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    .faq-question {
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1F2937;
+        transition: color 0.3s ease;
+    }
+    .faq-question:hover {
+        color: #E86A10;
+    }
+    .faq-icon {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        flex-shrink: 0;
+        margin-left: 15px;
+    }
+    /* Building the Plus/Minus Icon with CSS */
+    .faq-icon::before, .faq-icon::after {
+        content: '';
+        position: absolute;
+        background: #E86A10;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        border-radius: 2px;
+    }
+    .faq-icon::before {
+        top: 11px;
+        left: 0;
+        width: 24px;
+        height: 2px;
+    }
+    .faq-icon::after {
+        top: 0;
+        left: 11px;
+        width: 2px;
+        height: 24px;
+    }
+    /* When active, rotate the horizontal line and shrink the vertical line */
+    .faq-item.active .faq-icon::before {
+        transform: rotate(180deg);
+    }
+    .faq-item.active .faq-icon::after {
+        transform: scaleY(0);
+    }
+    .faq-answer {
+        height: 0;
+        overflow: hidden;
+        padding: 0 30px;
+        color: #6B7280;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    .faq-answer-inner {
+        padding-bottom: 25px;
+    }
+  </style>
+
+  <section id="faq-section">
+    <div class="faq-container">
+        <h2 class="faq-header">Frequently Asked Questions</h2>
+        <div class="faq-divider"></div>
+
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                How does the ordering process work?
+                <div class="faq-icon"></div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Just place an order, and the rest will be taken care of by us. We handle everything from sorting to packaging.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                How long does the service take?
+                <div class="faq-icon"></div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Your fresh clothes will be ready and returned to you within 24 to 48 hrs.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                Do you provide pick up and drop?
+                <div class="faq-icon"></div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    We do provide pick up and drop across all major areas in Bengaluru.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                Are my clothes washed with other customers' items?
+                <div class="faq-icon"></div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Absolutely not. We wash every customer's batch separately to ensure the highest hygiene and quality standards.
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- Premium Booking Modal Overlay -->
+<div class="booking-modal-overlay" id="bookingModal">
+    <div class="booking-modal-content">
+        
+        <!-- Close Button -->
+        <button class="close-modal-btn" id="closeModal">×</button>
+        
+        <div class="modal-header">
+            <h2>Book Your Wash</h2>
+            <p>Fill out the details below and we'll handle the rest.</p>
+        </div>
+
+        <form class="booking-form" id="laundryBookingForm">
+            <!-- Row 1 -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="e.g. Mera Customer" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="+91" required>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <label>Pickup Address</label>
+                    <input type="text" placeholder="House/Flat No., Street, Area" required>
+                </div>
+            </div>
+            
+            <!-- Row 3 -->
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <label>Delivery Address</label>
+                    <input type="text" placeholder="Leave blank if same as pickup">
+                </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Pincode</label>
+                    <input type="text" placeholder="e.g. 560076" required>
+                </div>
+                <div class="form-group">
+                    <label>Est. Quantity (Clothes)</label>
+                    <input type="number" placeholder="e.g. 15" min="1">
+                </div>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <label>Service Type</label>
+                    <select id="serviceTypeSelect" required>
+                        <option value="" disabled selected>Select a service...</option>
+                        <option value="wash-fold">Wash & Fold</option>
+                        <option value="wash-iron">Wash & Iron</option>
+                        <option value="express">24h Express Laundry</option>
+                        <option value="dry-clean">Premium Dry Cleaning</option>
+                    </select>
+                    
+                    <!-- Pro-Level Delivery Estimate Badge -->
+                    <div class="delivery-estimate-badge" id="deliveryEstimate">
+                        <span class="estimate-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Turnaround Time
+                        </span>
+                        <span class="estimate-value" id="estimateText">Select service</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-booking-btn magnetic-btn">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+  <script src="script.js"></script>
+
+  <!-- GSAP Animation Logic -->
+  <script>
+    // --- PREMIUM PRELOADER SEQUENCE ---
+    const seqTl = gsap.timeline();
+
+    // 1. Cloth
+    seqTl.to("#seq-1", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)" })
+         .to("#seq-1", { opacity: 0, scale: 0.8, duration: 0.2, ease: "power2.in" }, "+=0.15");
+
+    // 2. Washing Machine (with drum spin)
+    seqTl.to("#seq-2", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)" })
+         .to("#washing-drum", { rotation: 360, transformOrigin: "50% 50%", duration: 0.35, ease: "none" }, "<") // Spins simultaneously
+         .to("#seq-2", { opacity: 0, scale: 0.8, duration: 0.2, ease: "power2.in" }, "+=0.15");
+
+    // 3. Hanger
+    seqTl.to("#seq-3", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)" })
+         .to("#seq-3", { opacity: 0, scale: 0.8, duration: 0.2, ease: "power2.in" }, "+=0.15");
+
+    // 4. Delivery Truck
+    seqTl.to("#seq-4", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)" })
+         .to("#seq-4", { opacity: 0, scale: 0.8, duration: 0.2, ease: "power2.in" }, "+=0.15");
+
+    // 5. The Curtain Pull
+    seqTl.to("#premium-preloader", {
+        yPercent: -100, 
+        duration: 0.8,
+        ease: "power4.inOut",
+        onComplete: () => {
+            // Delete from DOM so the site underneath is clickable
+            document.getElementById("premium-preloader").style.display = "none";
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Idle Water Animation
+      gsap.to("#wm-water", {x: "20%", borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%", duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut"});
+
+      // Interaction State
+      const container = document.getElementById("wm-container");
+      if (container) {
+        container.addEventListener("click", () => {
+          gsap.to("#led-status", { backgroundColor: "#10B981" });
+          gsap.fromTo("#wm-cloth", {y: -150, opacity: 0}, {y: -30, opacity: 1, duration: 0.8, ease: "bounce.out"});
+          gsap.to("#wm-cloth", {rotation: 360, transformOrigin: "center center", duration: 1.2, repeat: -1, ease: "power1.inOut", delay: 0.8});
+        });
+      }
+      // Number Counter Animation Object
+      let counters = { customers: 0, cities: 0 };
+
+      gsap.to(counters, {
+          customers: 5,
+          cities: 10,
+          duration: 2,
+          ease: "power2.out",
+          onUpdate: function() {
+              document.getElementById("count-customers").innerText = Math.floor(counters.customers);
+              document.getElementById("count-cities").innerText = Math.floor(counters.cities);
+          }
+      });
+
+      // Pop in the "FREE" text right as numbers finish
+      gsap.to("#text-free", {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          delay: 1.5,
+          ease: "back.out(1.5)"
+      });
+
+      // Ensure ScrollTrigger is registered
+      gsap.registerPlugin(ScrollTrigger);
+
+      ScrollTrigger.create({
+          trigger: "#hero-wrapper",
+          start: "top top", // Pin starts when the top of the hero hits the top of the screen
+          endTrigger: "#pricing-services", // Pin ends when the top of the pricing section hits...
+          end: "top top", // ...the top of the screen
+          pin: true,
+          pinSpacing: false // Crucial: Allows the pricing section to scroll OVER the pinned hero
+      });
+
+      // The Card Entrance (Uses .to instead of .from to prevent CSS conflicts)
+      gsap.to(".service-card", {
+          scrollTrigger: {
+              trigger: "#pricing-services",
+              start: "top 75%", // Triggers slightly earlier for a smoother feel
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "back.out(1.2)"
+      });
+
+      // Promise Section Animations
+      let promiseTl = gsap.timeline({
+          scrollTrigger: {
+              trigger: "#we-promise",
+              start: "top 75%", // Triggers when the section is 25% into the viewport
+          }
+      });
+
+      // Stagger the list items from the left
+      promiseTl.to(".promise-item", {
+          x: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out"
+      }, 0);
+
+      // Slide the real store image in from the right simultaneously
+      promiseTl.to(".promise-image-wrapper", {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "back.out(1.1)"
+      }, 0.2); // Slight delay so the text starts just before the image
+
+      // City Modal GSAP Logic
+      const cityOverlay = document.getElementById('city-modal-overlay');
+      const cityModalBox = document.getElementById('city-modal-box');
+      const closeCityBtn = document.getElementById('close-city-modal');
+
+      // Create a reusable GSAP timeline paused by default
+      const modalTl = gsap.timeline({ paused: true });
+
+      // The Entrance Animation
+      modalTl.to(cityOverlay, { opacity: 1, pointerEvents: 'auto', duration: 0.3, ease: 'power2.out' })
+             .to(cityModalBox, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.2)' }, "-=0.15");
+
+      // Open Function (You can call this from any button on your site)
+      window.openCityModal = function() {
+          modalTl.timeScale(1).play();
+          document.body.style.overflow = 'hidden'; // Stop background scrolling
+      };
+
+      // Close Function
+      window.closeCityModal = function() {
+          modalTl.timeScale(1.5).reverse(); // Speed up the reverse animation slightly
+          document.body.style.overflow = ''; // Restore scrolling
+      };
+
+      // Event Listeners for closing
+      closeCityBtn.addEventListener('click', closeCityModal);
+      cityOverlay.addEventListener('click', function(e) {
+          if (e.target === cityOverlay) closeCityModal(); // Close if clicking outside the box
+      });
+
+      // Interactive state toggle for city cards
+      document.querySelectorAll('.city-card').forEach(card => {
+          card.addEventListener('click', function() {
+              document.querySelectorAll('.city-card').forEach(c => c.classList.remove('active'));
+              this.classList.add('active');
+              // Optional: Auto-close after selection
+              setTimeout(closeCityModal, 300);
+          });
+      });
+
+      // How It Works Animation
+      gsap.to(".step-card", {
+          scrollTrigger: {
+              trigger: "#how-it-works",
+              start: "top 75%", 
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: "back.out(1.4)"
+      });
+
+      // Testimonial Slider Logic
+      let currentSlide = 0;
+      const track = document.getElementById('testi-track');
+      const dots = document.querySelectorAll('.dot');
+      const totalSlides = 3;
+
+      // Function to move the track and update dots
+      window.goToSlide = function(index) {
+          currentSlide = index;
+          
+          // Slide the track left or right
+          track.style.transform = `translateX(-${currentSlide * 100}%)`;
+          
+          // Update the active dot styling
+          dots.forEach(dot => dot.classList.remove('active'));
+          dots[currentSlide].classList.add('active');
+      };
+
+      // Auto-play the slider every 5 seconds
+      setInterval(() => {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          goToSlide(currentSlide);
+      }, 5000);
+
+      // GSAP Reveal Animation (Fades in the entire slider wrapper)
+      gsap.to(".slider-wrapper", {
+          scrollTrigger: {
+              trigger: "#testimonial",
+              start: "top 80%",
+          },
+          scale: 1,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out"
+      });
+
+      // FAQ Section Reveal Animation
+      gsap.to(".faq-item", {
+          scrollTrigger: {
+              trigger: "#faq-section",
+              start: "top 80%",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "back.out(1.2)"
+      });
+
+      // Accordion Expand/Collapse Logic using GSAP
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+          const question = item.querySelector('.faq-question');
+          const answer = item.querySelector('.faq-answer');
+
+          question.addEventListener('click', () => {
+              const isOpen = item.classList.contains('active');
+
+              // Close all other open FAQs
+              faqItems.forEach(otherItem => {
+                  if (otherItem !== item && otherItem.classList.contains('active')) {
+                      otherItem.classList.remove('active');
+                      gsap.to(otherItem.querySelector('.faq-answer'), { height: 0, duration: 0.4, ease: "power2.out" });
+                  }
+              });
+
+              // Toggle the clicked FAQ
+              if (isOpen) {
+                  item.classList.remove('active');
+                  gsap.to(answer, { height: 0, duration: 0.4, ease: "power2.out" });
+              } else {
+                  item.classList.add('active');
+                  // Calculate auto height for GSAP
+                  gsap.set(answer, { height: "auto" });
+                  const fullHeight = answer.offsetHeight;
+                  gsap.set(answer, { height: 0 }); // reset before animating
+                  gsap.to(answer, { height: fullHeight, duration: 0.4, ease: "power2.out" });
+              }
+          });
+      });
+
+      // Footer Reveal Animation
+      gsap.to(".gsap-footer-reveal", {
+          scrollTrigger: {
+              trigger: "#site-footer",
+              start: "top 85%", // Triggers right as the footer enters the viewport
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out"
+      });
+
+      // Smart Washer Animations
+
+
+
+
+
+      // 3. Intro pop-in animation on load
+      gsap.from(".gsap-washer-intro", {
+          scale: 0.8,
+          opacity: 0,
+          y: 30,
+          duration: 1.2,
+          ease: "elastic.out(1, 0.75)",
+          delay: 1 // Waits for the preloader curtain to finish
+      });
+
+      // Dynamic Number Counters (Delayed for Preloader)
+      let customerStat = { val: 0 };
+      let cityStat = { val: 0 };
+
+      // 1. Customers: 0 to 5,00,000
+      gsap.to(customerStat, {
+          val: 500000, 
+          duration: 3, // Takes 3 seconds to roll up for maximum impact
+          ease: "power3.out", 
+          delay: 2.2, // WAITS for the preloader curtain to lift!
+          onUpdate: function() {
+              // Formats to Indian numbering system (e.g., 5,00,000)
+              document.getElementById("customer-count").innerText = Math.floor(customerStat.val).toLocaleString('en-IN');
+          }
+      });
+
+      // 2. Cities: 0 to 10
+      gsap.to(cityStat, {
+          val: 10,
+          duration: 2.5,
+          ease: "power2.out",
+          delay: 2.4, // Starts a fraction of a second after the customer count
+          onUpdate: function() {
+              document.getElementById("city-count").innerText = Math.floor(cityStat.val);
+          }
+      });
+
+// Register ScrollTrigger (Make sure you have the ScrollTrigger CDN linked in your head!)
+gsap.registerPlugin(ScrollTrigger);
+
+// ----------------------------------------------------
+// 1. Smooth Scroll Reveals (Bulletproof Fade & Slide Up)
+// ----------------------------------------------------
+gsap.utils.toArray('.reveal-up').forEach(function(card) {
+    gsap.fromTo(card, 
+        { 
+            y: 50, 
+            opacity: 0 
+        }, 
+        {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%", // Triggers when the card is 85% down the screen
+                toggleActions: "play none none none"
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "power3.out"
+        }
+    );
+});
+
+// ----------------------------------------------------
+// 2. Magnetic CTA Button Effect
+// ----------------------------------------------------
+const magneticButtons = document.querySelectorAll('.magnetic-btn');
+
+magneticButtons.forEach(function(btn) {
+    // When the mouse moves over the button, pull it towards the cursor
+    btn.addEventListener('mousemove', function(e) {
+        const position = btn.getBoundingClientRect();
+        const x = e.clientX - position.left - position.width / 2;
+        const y = e.clientY - position.top - position.height / 2;
+        
+        gsap.to(btn, {
+            x: x * 0.3, // Adjust this multiplier to make the pull stronger or weaker
+            y: y * 0.3,
+            duration: 0.5,
+            ease: "power2.out"
+        });
+    });
+
+    // When the mouse leaves, cleanly snap it back to the center
+    btn.addEventListener('mouseleave', function() {
+        gsap.to(btn, {
+            x: 0,
+            y: 0,
+            duration: 0.7,
+            ease: "elastic.out(1, 0.3)" // Gives it that satisfying "boing" snap back
+        });
+    });
+});
+// Modal Toggle Logic
+const modal = document.getElementById('bookingModal');
+const closeBtn = document.getElementById('closeModal');
+// Select ALL "Book Now" buttons on the page
+const bookNowButtons = document.querySelectorAll('.book-now-trigger'); 
+
+// Function to open modal
+function openModal(e) {
+    e.preventDefault();
+    modal.classList.add('active');
+}
+
+// Attach event to all book buttons
+document.querySelectorAll('.book-now-trigger').forEach(btn => { 
+    btn.addEventListener('click', openModal);
+});
+
+// Close when clicking the X
+closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+});
+
+// Close when clicking outside the white box
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+    }
+});
+
+// Dynamic Delivery Estimates Logic (Pro-Level)
+const serviceSelect = document.getElementById('serviceTypeSelect');
+const estimateBadge = document.getElementById('deliveryEstimate');
+const estimateText = document.getElementById('estimateText');
+
+// Dictionary mapping pure time values
+const deliveryTimes = {
+    "wash-fold": "48-72 Hours",
+    "wash-iron": "48-72 Hours",
+    "express": "24 Hours ⚡",
+    "dry-clean": "3-4 Days"
+};
+
+// Listen for the user to pick an option
+serviceSelect.addEventListener('change', function() {
+    const selectedVal = this.value;
+    
+    if (deliveryTimes[selectedVal]) {
+        estimateText.innerText = deliveryTimes[selectedVal];
+        estimateBadge.classList.add('active-estimate');
+    }
+});
+
+// The Aman Bajaj "Show-Stopper" Sequence
+const washFoldCard = document.getElementById('card-wash-fold');
+const tshirt = washFoldCard.querySelector('.anim-tshirt');
+const machine = washFoldCard.querySelector('.anim-machine');
+const folded = washFoldCard.querySelector('.anim-folded');
+
+// We build a GSAP timeline paused by default
+let hoverMovie = gsap.timeline({ paused: true });
+
+hoverMovie
+    // 1. T-shirt shrinks and vanishes
+    .to(tshirt, { opacity: 0, scale: 0.5, duration: 0.2 })
+    
+    // 2. Machine appears, scales up, and does a quick spin cycle
+    .fromTo(machine, 
+        { opacity: 0, scale: 0.5, rotation: 0 }, 
+        { opacity: 1, scale: 1, rotation: 360, duration: 0.6, ease: "power2.inOut" }
+    )
+    .to(machine, { opacity: 0, scale: 0.5, duration: 0.2 })
+    
+    // 3. Folded clothes pop up like they are fresh out of the machine
+    .fromTo(folded, 
+        { opacity: 0, y: 15 }, 
+        { opacity: 1, y: 0, scale: 1.1, duration: 0.3, ease: "back.out(1.5)" }
+    )
+    .to(folded, { scale: 1, duration: 0.1 }) // Settles into place
+    .to(folded, { opacity: 0, duration: 0.2, delay: 0.4 }) // Waits a moment, then fades
+    
+    // 4. Original T-shirt pops back in perfectly
+    .to(tshirt, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)" });
+
+// Trigger the movie on hover
+washFoldCard.addEventListener('mouseenter', () => {
+    // Only play if it's not already playing to prevent visual glitching if they hover quickly
+    if (!hoverMovie.isActive()) {
+        hoverMovie.restart();
+    }
+});
+
+// The Aman Bajaj "Wash & Iron" Sequence
+const washIronCard = document.getElementById('card-wash-iron');
+const defaultIron = washIronCard.querySelector('.anim-default-iron');
+const machineIron = washIronCard.querySelector('.anim-machine-iron');
+const steamIron = washIronCard.querySelector('.anim-steam-iron');
+
+// Build the timeline, paused by default
+let ironMovie = gsap.timeline({ paused: true });
+
+ironMovie
+    // 1. Default logo shrinks and vanishes
+    .to(defaultIron, { opacity: 0, scale: 0.5, duration: 0.2 })
+    
+    // 2. Machine appears, scales up, and does the exact same spin cycle
+    .fromTo(machineIron, 
+        { opacity: 0, scale: 0.5, rotation: 0 }, 
+        { opacity: 1, scale: 1, rotation: 360, duration: 0.6, ease: "power2.inOut" }
+    )
+    .to(machineIron, { opacity: 0, scale: 0.5, duration: 0.2 })
+    
+    // 3. Steaming Iron appears and mimics an ironing motion
+    .fromTo(steamIron, 
+        { opacity: 0, x: 15, y: -5 }, // Starts slightly to the right
+        { opacity: 1, x: -15, duration: 0.4, ease: "power1.inOut" } // Glides left
+    )
+    .to(steamIron, { x: 10, duration: 0.3, ease: "power1.inOut" }) // Glides right (ironing stroke)
+    .to(steamIron, { x: -5, duration: 0.2, ease: "power1.out" }) // Settles in center
+    .to(steamIron, { opacity: 0, scale: 0.8, duration: 0.2, delay: 0.2 }) // Fades out
+    
+    // 4. Original logo pops back in perfectly
+    .to(defaultIron, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)" });
+
+// Trigger the sequence on hover
+washIronCard.addEventListener('mouseenter', () => {
+    // Only play if it's not already playing to prevent glitches
+    if (!ironMovie.isActive()) {
+        ironMovie.restart();
+    }
+});
+
+// The "24-Hour Express" Sequence
+const expressCard = document.getElementById('card-express');
+const defaultExpress = expressCard.querySelector('.anim-default-express');
+const tickingClock = expressCard.querySelector('.anim-ticking-clock');
+const lightningFlash = expressCard.querySelector('.anim-lightning-flash');
+
+// Build the timeline, paused by default
+let expressMovie = gsap.timeline({ paused: true });
+
+expressMovie
+    // 1. Default logo shrinks and vanishes
+    .to(defaultExpress, { opacity: 0, scale: 0.5, duration: 0.2 })
+    
+    // 2. Clock appears and ticks rapidly 
+    .fromTo(tickingClock, 
+        { opacity: 0, scale: 0.8, rotation: 0 }, 
+        { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(1.5)" }
+    )
+    // The "steps" ease creates the mechanical ticking effect
+    .to(tickingClock, { rotation: 360, duration: 0.8, ease: "steps(12)" })
+    .to(tickingClock, { opacity: 0, scale: 0.5, duration: 0.2 })
+    
+    // 3. Lightning bolt pops in to symbolize speed
+    .fromTo(lightningFlash, 
+        { opacity: 0, scale: 0, rotation: -15 }, 
+        { opacity: 1, scale: 1.2, rotation: 0, duration: 0.3, ease: "elastic.out(1, 0.5)" }
+    )
+    // A quick flashing effect for the lightning
+    .to(lightningFlash, { opacity: 0.5, duration: 0.05, yoyo: true, repeat: 3 })
+    .to(lightningFlash, { opacity: 0, scale: 0.5, duration: 0.2, delay: 0.1 })
+    
+    // 4. Original logo pops back in perfectly
+    .to(defaultExpress, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)" });
+
+// Trigger the sequence on hover
+expressCard.addEventListener('mouseenter', () => {
+    if (!expressMovie.isActive()) {
+        expressMovie.restart();
+    }
+});
+
+// The Premium "Dry Cleaning" Sequence (Minimalist)
+const dryCleanCard = document.getElementById('card-dry-clean');
+const defaultDry = dryCleanCard.querySelector('.anim-default-dry');
+const suitJacket = dryCleanCard.querySelector('.anim-suit-jacket');
+
+// Build the timeline, paused by default
+let dryCleanMovie = gsap.timeline({ paused: true });
+
+dryCleanMovie
+    // 1. Default logo shrinks and vanishes
+    .to(defaultDry, { opacity: 0, scale: 0.5, duration: 0.2 })
+    
+    // 2. Suit jacket smoothly glides up as if being hung on a rack
+    .fromTo(suitJacket, 
+        { opacity: 0, y: 15, scale: 0.9 }, 
+        { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out" }
+    )
+    
+    // 3. Jacket holds for a moment, then fades out
+    .to(suitJacket, { opacity: 0, scale: 0.8, duration: 0.2, delay: 0.6 })
+    
+    // 4. Original logo pops back in perfectly
+    .to(defaultDry, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.5)" });
+
+// Trigger the sequence on hover
+dryCleanCard.addEventListener('mouseenter', () => {
+    if (!dryCleanMovie.isActive()) {
+        dryCleanMovie.restart();
+    }
+});
+    });
+  </script>
+<style>
+    /* Modal Overlay (The Glass Effect) */
+    #city-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(17, 24, 39, 0.4);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none; /* Prevents clicks when hidden */
+    }
+
+    /* The Modal Box */
+    #city-modal-box {
+        background: #FFFFFF;
+        width: 90%;
+        max-width: 650px;
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        /* GSAP Initial State */
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        position: relative;
+    }
+
+    /* Header & Close Button */
+    .city-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+    .city-modal-header h3 {
+        font-size: 24px;
+        font-weight: 800;
+        color: #1F2937;
+        margin: 0;
+    }
+    #close-city-modal {
+        background: none;
+        border: none;
+        font-size: 28px;
+        color: #9CA3AF;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        padding: 0;
+        line-height: 1;
+    }
+    #close-city-modal:hover {
+        color: #E86A10;
+    }
+
+    /* Search Bar */
+    .city-search-wrapper {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    .city-search-wrapper input {
+        width: 100%;
+        padding: 16px 20px 16px 50px;
+        border: 1px solid #E5E7EB;
+        border-radius: 12px;
+        font-size: 16px;
+        color: #374151;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        box-sizing: border-box;
+    }
+    .city-search-wrapper input:focus {
+        border-color: #E86A10;
+        box-shadow: 0 0 0 4px rgba(232, 106, 16, 0.1);
+    }
+    .city-search-icon {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9CA3AF;
+    }
+
+    /* City Grid */
+    .city-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 15px;
+    }
+    .city-card {
+        border: 1px solid #E5E7EB;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: #4B5563;
+        font-weight: 600;
+    }
+    .city-card:hover {
+        border-color: #E86A10;
+        background: #FFF4EC;
+        color: #E86A10;
+        transform: translateY(-2px);
+    }
+    .city-card.active {
+        border-color: #E86A10;
+        background: #E86A10;
+        color: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(232, 106, 16, 0.3);
+    }
+</style>
+
+<style>
+    #site-footer {
+        background-color: #111827; /* Premium Dark Slate */
+        color: #9CA3AF;
+        padding: 80px 5% 40px;
+        font-size: 14px;
+        font-family: sans-serif;
+    }
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        border-bottom: 1px solid #374151;
+        padding-bottom: 50px;
+    }
+    @media (min-width: 992px) {
+        .footer-grid {
+            grid-template-columns: 2fr 1fr;
+            gap: 80px;
+        }
+    }
+    
+    /* SEO Links Area */
+    .seo-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .seo-block {
+        display: flex;
+        flex-direction: column;
+    }
+    @media (min-width: 768px) {
+        .seo-block {
+            flex-direction: row;
+            gap: 15px;
+        }
+    }
+    .seo-title {
+        color: #FFFFFF;
+        font-weight: 700;
+        min-width: 140px;
+        margin: 0 0 5px 0;
+    }
+    .seo-links {
+        line-height: 1.8;
+        font-size: 13px;
+    }
+    .seo-links a {
+        color: #9CA3AF;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .seo-links a:hover {
+        color: #E86A10;
+    }
+    .seo-separator {
+        color: #4B5563;
+        margin: 0 5px;
+    }
+
+    /* Right Side Contact & Address */
+    .footer-contact-box {
+        background: #1F2937;
+        padding: 30px;
+        border-radius: 16px;
+        border: 1px solid #374151;
+    }
+    .contact-item {
+        margin-bottom: 20px;
+    }
+    .contact-item:last-child {
+        margin-bottom: 0;
+    }
+    .contact-label {
+        color: #E86A10;
+        font-weight: 700;
+        margin-bottom: 5px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .contact-text {
+        color: #F3F4F6;
+        line-height: 1.6;
+    }
+
+    /* Bottom Copyright Bar */
+    .footer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30px;
+        font-size: 13px;
+        gap: 20px;
+    }
+    .footer-legal a {
+        color: #9CA3AF;
+        text-decoration: none;
+        margin-right: 20px;
+        transition: color 0.2s ease;
+    }
+    .footer-legal a:hover {
+        color: #FFFFFF;
+    }
+    .agency-credit {
+        color: #FFFFFF;
+    }
+    .agency-name {
+        color: #E86A10;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    /* GSAP Initial State */
+    .gsap-footer-reveal {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+</style>
+
+<footer id="site-footer">
+    <div class="footer-container">
+        
+        <div class="footer-grid">
+            <!-- Left: SEO Text Links -->
+            <div class="seo-section gsap-footer-reveal">
+                
+                <div class="seo-block">
+                    <div class="seo-title">Dry cleaning:</div>
+                    <div class="seo-links">
+                        <a href="#">Bangalore</a> <span class="seo-separator">|</span>
+                        <a href="#">Delhi</a> <span class="seo-separator">|</span>
+                        <a href="#">Noida</a> <span class="seo-separator">|</span>
+                        <a href="#">Gurgoan</a> <span class="seo-separator">|</span>
+                        <a href="#">Mumbai</a> <span class="seo-separator">|</span>
+                        <a href="#">Thane</a> <span class="seo-separator">|</span>
+                        <a href="#">Raipur</a> <span class="seo-separator">|</span>
+                        <a href="#">Indore</a> <span class="seo-separator">|</span>
+                        <a href="#">Pune</a>
+                    </div>
+                </div>
+
+                <div class="seo-block">
+                    <div class="seo-title">Laundry service:</div>
+                    <div class="seo-links">
+                        <a href="#">Bangalore</a> <span class="seo-separator">|</span>
+                        <a href="#">Delhi</a> <span class="seo-separator">|</span>
+                        <a href="#">Noida</a> <span class="seo-separator">|</span>
+                        <a href="#">Gurgoan</a> <span class="seo-separator">|</span>
+                        <a href="#">Mumbai</a> <span class="seo-separator">|</span>
+                        <a href="#">Thane</a> <span class="seo-separator">|</span>
+                        <a href="#">Raipur</a> <span class="seo-separator">|</span>
+                        <a href="#">Indore</a> <span class="seo-separator">|</span>
+                        <a href="#">Pune</a>
+                    </div>
+                </div>
+
+                <div class="seo-block">
+                    <div class="seo-title">Trending:</div>
+                    <div class="seo-links">
+                        <a href="#">Laundry pickup and delivery</a> <span class="seo-separator">|</span>
+                        <a href="#">Eco-friendly dry cleaning</a> <span class="seo-separator">|</span>
+                        <a href="#">Curtains cleaning service</a> <span class="seo-separator">|</span>
+                        <a href="#">Shoe cleaning</a> <span class="seo-separator">|</span>
+                        <a href="#">Express laundry service</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right: Contact & Address -->
+            <div class="footer-contact-box gsap-footer-reveal">
+                <div class="contact-item">
+                    <div class="contact-label">Helpline</div>
+                    <div class="contact-text">support@meralaundry.in</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Head Office</div>
+                    <div class="contact-text">
+                        WeWork Salarpuria Symbiosis,<br>
+                        Ground floor Bannerghatta Road Arekere Village,<br>
+                        Begur Hobli, Bengaluru, Karnataka 560076
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Made with ♥ in India</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Legal & Agency Credit -->
+        <div class="footer-bottom gsap-footer-reveal">
+            <div class="footer-legal">
+                <a href="#">Policies</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="agency-credit">
+                Copyright © 2026 Mera Laundry. Designed & Developed by <span class="agency-name">WebDev 24</span>.
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<div id="city-modal-overlay">
+    <div id="city-modal-box">
+        <div class="city-modal-header">
+            <h3>Select your City</h3>
+            <button id="close-city-modal">&times;</button>
+        </div>
+        
+        <div class="city-search-wrapper">
+            <div class="city-search-icon">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <input type="text" placeholder="Search for your city or area...">
+        </div>
+
+        <div class="city-grid">
+            <div class="city-card active">Bengaluru</div>
+            <div class="city-card">Mumbai</div>
+            <div class="city-card">Delhi NCR</div>
+            <div class="city-card">Hyderabad</div>
+            <div class="city-card">Pune</div>
+            <div class="city-card">Chennai</div>
+            <div class="city-card">Kolkata</div>
+            <div class="city-card">Ahmedabad</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
