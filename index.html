@@ -1466,6 +1466,332 @@
             z-index: 10;
         }
     }
+
+    /* Phone Popup Animation Styles */
+    .step-card { position: relative; overflow: visible !important; }
+    
+    .phone-popup-container {
+        position: absolute;
+        top: -140px;
+        left: 50%;
+        margin-left: -50px;
+        transform: translateY(30px) scale(0.9);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 20;
+    }
+    
+    .phone-bezel {
+        width: 100px;
+        height: 160px;
+        background: #111;
+        border-radius: 20px;
+        padding: 6px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 0 2px #444;
+    }
+    
+    .phone-screen {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #FF8C00 0%, #E86A10 100%);
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .phone-check-svg {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 8px;
+    }
+    
+    .check-circle {
+        stroke: #fff;
+        stroke-width: 3;
+        stroke-dasharray: 160;
+        stroke-dashoffset: 160;
+    }
+    
+    .check-path {
+        stroke: #fff;
+        stroke-width: 4;
+        stroke-dasharray: 48;
+        stroke-dashoffset: 48;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    
+    .phone-text {
+        color: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+
+    /* Door Popup Animation Styles */
+    .door-popup-container {
+        position: absolute;
+        top: -140px;
+        left: 50%;
+        margin-left: -60px;
+        width: 120px;
+        height: 160px;
+        transform: translateY(30px) scale(0.9);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 20;
+    }
+    
+    .door-bezel {
+        width: 100%;
+        height: 100%;
+        background: #111;
+        border-radius: 20px;
+        padding: 6px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 0 2px #444;
+    }
+    
+    .door-scene {
+        width: 100%;
+        height: 100%;
+        background: #FFDAB9; /* House interior color */
+        border-radius: 14px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .door-frame {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+    }
+    
+    .door-panel {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #FF8C00 0%, #E86A10 100%);
+        border-radius: 14px;
+        border-right: 4px solid #C0550B;
+        z-index: 5;
+    }
+
+    .door-knob {
+        position: absolute;
+        top: 50%; right: 10px;
+        width: 6px; height: 12px;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .delivery-scene-svg {
+        position: absolute;
+        bottom: -5px; left: 0;
+        width: 100%; height: 100%;
+        z-index: 3;
+    }
+
+    .pickup-text {
+        position: absolute;
+        top: 20px;
+        width: 100%;
+        color: #E86A10;
+        font-size: 13px;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+        opacity: 0;
+        transform: translateY(10px);
+        z-index: 10;
+        text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+    }
+
+    /* Washer Popup Animation Styles */
+    .washer-popup-container {
+        position: absolute;
+        top: -160px;
+        left: 50%;
+        margin-left: -55px;
+        width: 110px;
+        height: 140px;
+        transform: translateY(30px) scale(0.9);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 20;
+    }
+    
+    .washer-chassis {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #FF8C00 0%, #E86A10 100%);
+        border-radius: 12px;
+        padding: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 -4px 0 #C0550B;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid #C0550B;
+    }
+    
+    .washer-panel {
+        width: 100%;
+        height: 24px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 6px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        justify-content: space-between;
+    }
+
+    .washer-dial {
+        width: 12px; height: 12px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .washer-lights { display: flex; gap: 4px; }
+    .washer-lights span { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.4); }
+    .washer-lights span:nth-child(3) { background: #fff; box-shadow: 0 0 4px #fff; } /* Power light */
+
+    .washer-door {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 5px solid #FFDAB9;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff; /* White interior so orange water pops */
+        overflow: hidden;
+    }
+
+    .washer-drum {
+        width: 100%; height: 100%;
+        position: relative;
+        border-radius: 50%;
+    }
+
+    .washer-water {
+        position: absolute;
+        bottom: -20%;
+        left: -10%;
+        width: 120%;
+        height: 70%;
+        background: rgba(232, 106, 16, 0.75); /* Orange water color */
+        border-radius: 40%; /* Wavy top */
+    }
+
+    .process-text {
+        position: absolute;
+        bottom: -25px;
+        width: 100%;
+        color: #E86A10;
+        font-size: 13px;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+        opacity: 0;
+        transform: translateY(10px);
+        z-index: 10;
+        text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+    }
+
+    /* Truck Popup Animation Styles */
+    .truck-popup-container {
+        position: absolute;
+        top: -140px;
+        left: 50%;
+        margin-left: -70px;
+        width: 140px;
+        height: 120px;
+        transform: translateY(30px) scale(0.9);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 20;
+    }
+
+    .truck-scene {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 0 0 2px #E86A10;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .truck-road {
+        position: absolute;
+        bottom: 15px;
+        left: 0;
+        width: 200%;
+        height: 4px;
+        background: repeating-linear-gradient(90deg, #E86A10 0px, #E86A10 15px, transparent 15px, transparent 30px);
+    }
+
+    .orange-truck-svg {
+        position: absolute;
+        bottom: -2px;
+        left: 32px;
+        width: 75px;
+        height: 75px;
+        z-index: 5;
+    }
+
+    .exhaust-clouds {
+        position: absolute;
+        bottom: 15px;
+        left: 10px;
+        width: 40px;
+        height: 30px;
+        z-index: 4;
+    }
+    .exhaust-clouds .cloud {
+        position: absolute;
+        background: #FFDAB9;
+        border-radius: 50%;
+        opacity: 0;
+    }
+    .exhaust-clouds .cloud:nth-child(1) { width: 10px; height: 10px; bottom: 5px; right: 0; }
+    .exhaust-clouds .cloud:nth-child(2) { width: 15px; height: 15px; bottom: 10px; right: 10px; }
+    .exhaust-clouds .cloud:nth-child(3) { width: 8px; height: 8px; bottom: 15px; right: 25px; }
+
+    .delivery-text {
+        position: absolute;
+        bottom: -25px;
+        width: 100%;
+        color: #E86A10;
+        font-size: 13px;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+        opacity: 0;
+        transform: translateY(10px);
+        z-index: 10;
+        text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+    }
   </style>
 
   <section id="how-it-works">
@@ -1474,8 +1800,22 @@
 
     <div class="steps-grid">
         <!-- Step 1 -->
-        <div class="step-card reveal-up">
+        <div class="step-card reveal-up" id="bookOrderCard">
             <div class="step-number-watermark">1</div>
+
+            <!-- The Interactive Phone Popup -->
+            <div class="phone-popup-container">
+                <div class="phone-bezel">
+                    <div class="phone-screen">
+                        <svg class="phone-check-svg" viewBox="0 0 52 52">
+                            <circle class="check-circle" cx="26" cy="26" r="24" fill="none"/>
+                            <path class="check-path" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                        <div class="phone-text">Order<br>Confirmed</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="step-icon-wrap">
                 <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="5" y="2" width="14" height="20" rx="3" ry="3"></rect>
@@ -1487,8 +1827,48 @@
         </div>
 
         <!-- Step 2 -->
-        <div class="step-card reveal-up">
+        <div class="step-card reveal-up" id="pickupCard">
             <div class="step-number-watermark">2</div>
+
+            <!-- The Interactive Doorway Popup -->
+            <div class="door-popup-container">
+                <div class="door-bezel">
+                    <div class="door-scene">
+                        
+                        <!-- The Animated Scene Elements -->
+                        <div class="door-frame"></div>
+                        <svg viewBox="15 25 95 95" class="delivery-scene-svg">
+                            <!-- Basket (Static inside door until picked up) -->
+                            <g class="laundry-basket">
+                                <path fill="#fff" d="M35 100 L65 100 L70 70 L30 70 Z" />
+                                <path fill="#E86A10" opacity="0.5" d="M32 70 Q50 60 68 70 Z" />
+                            </g>
+                        
+                            <!-- Orange Man (Starts outside right, slides in) -->
+                            <g class="orange-man">
+                                <!-- Head with cap -->
+                                <circle cx="85" cy="40" r="12" fill="#E86A10" />
+                                <path d="M73 40 Q85 25 100 40 Z" fill="#E86A10" />
+                                <!-- Torso -->
+                                <path d="M75 55 Q85 50 95 55 L90 95 L80 95 Z" fill="#E86A10" />
+                                <!-- Legs -->
+                                <path d="M80 95 L80 115" stroke="#E86A10" stroke-width="8" stroke-linecap="round" />
+                                <path d="M90 95 L90 115" stroke="#E86A10" stroke-width="8" stroke-linecap="round" />
+                                <!-- Arm -->
+                                <path class="man-arm" d="M85 60 Q70 70 55 75" stroke="#E86A10" stroke-width="8" stroke-linecap="round" fill="none" />
+                            </g>
+                        </svg>
+
+                        <!-- The Sliding Door -->
+                        <div class="door-panel">
+                            <div class="door-knob"></div>
+                        </div>
+
+                        <div class="pickup-text">Picked<br>Up!</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="step-icon-wrap">
                 <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#E86A10" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <!-- The Door Frame -->
@@ -1507,8 +1887,27 @@
         </div>
 
         <!-- Step 3 -->
-        <div class="step-card reveal-up">
+        <div class="step-card reveal-up" id="processCard">
             <div class="step-number-watermark">3</div>
+
+            <!-- The Interactive Washer Popup -->
+            <div class="washer-popup-container">
+                <div class="washer-chassis">
+                    <div class="washer-panel">
+                        <div class="washer-dial"></div>
+                        <div class="washer-lights">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="washer-door">
+                        <div class="washer-drum">
+                            <div class="washer-water"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="process-text">Washing...</div>
+            </div>
+
             <div class="step-icon-wrap">
                 <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -1522,8 +1921,37 @@
         </div>
 
         <!-- Step 4 -->
-        <div class="step-card reveal-up">
+        <div class="step-card reveal-up" id="deliveryCard">
             <div class="step-number-watermark">4</div>
+            
+            <!-- The Interactive Truck Popup -->
+            <div class="truck-popup-container">
+                <div class="truck-scene">
+                    <div class="truck-road"></div>
+                    <div class="exhaust-clouds">
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                    </div>
+                    <svg viewBox="0 0 24 24" class="orange-truck-svg">
+                        <!-- Trailer Box -->
+                        <rect x="2" y="6" width="12" height="12" rx="1.5" fill="#E86A10" />
+                        <!-- Cab -->
+                        <path d="M13 9 L18 9 L22 13 L22 16.5 A 1.5 1.5 0 0 1 20.5 18 L13 18 Z" fill="#E86A10" />
+                        <!-- Gap Filler between Box and Cab -->
+                        <rect x="10" y="9" width="4" height="9" fill="#E86A10" />
+                        <!-- Window -->
+                        <path d="M15 10.5 h 2.5 l 2.5 2.5 v 2 h -5 z" fill="#FFDAB9" />
+                        <!-- Wheel wells/Wheels -->
+                        <circle cx="7" cy="18" r="2.5" fill="#C0550B" />
+                        <circle cx="17" cy="18" r="2.5" fill="#C0550B" />
+                        <!-- Stripe -->
+                        <rect x="4" y="11" width="7" height="1.5" rx="0.5" fill="#FFDAB9" />
+                    </svg>
+                </div>
+                <div class="delivery-text">Delivering!</div>
+            </div>
+
             <div class="step-icon-wrap">
                 <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"></path>
@@ -2030,6 +2458,167 @@
           ease: "back.out(1.4)"
       });
 
+      // Phone Popup Animation (Book Order Step)
+      const bookOrderCard = document.getElementById('bookOrderCard');
+      if (bookOrderCard) {
+          const popup = bookOrderCard.querySelector('.phone-popup-container');
+          const checkCircle = bookOrderCard.querySelector('.check-circle');
+          const checkPath = bookOrderCard.querySelector('.check-path');
+          const phoneText = bookOrderCard.querySelector('.phone-text');
+          
+          let phoneAnim;
+          
+          bookOrderCard.addEventListener('mouseenter', () => {
+              if(phoneAnim) phoneAnim.kill();
+              
+              // Reset SVG drawing states and text
+              gsap.set(checkCircle, { strokeDashoffset: 160 });
+              gsap.set(checkPath, { strokeDashoffset: 48 });
+              gsap.set(phoneText, { opacity: 0, y: 10 });
+              
+              phoneAnim = gsap.timeline()
+                  .to(popup, { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.2)" })
+                  .to(checkCircle, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, "-=0.1")
+                  .to(checkPath, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, "-=0.2")
+                  .to(phoneText, { opacity: 1, y: 0, duration: 0.3, ease: "power1.out" }, "-=0.2");
+          });
+          
+          bookOrderCard.addEventListener('mouseleave', () => {
+              if(phoneAnim) phoneAnim.kill();
+              gsap.to(popup, { y: 30, scale: 0.9, opacity: 0, duration: 0.3, ease: "power2.in" });
+          });
+      }
+
+      // Door Popup Animation (Pickup Step)
+      const pickupCard = document.getElementById('pickupCard');
+      if (pickupCard) {
+          const popup = pickupCard.querySelector('.door-popup-container');
+          const doorPanel = pickupCard.querySelector('.door-panel');
+          const orangeMan = pickupCard.querySelector('.orange-man');
+          const manArm = pickupCard.querySelector('.man-arm');
+          const laundryBasket = pickupCard.querySelector('.laundry-basket');
+          const pickupText = pickupCard.querySelector('.pickup-text');
+          
+          let doorAnim;
+          
+          pickupCard.addEventListener('mouseenter', () => {
+              if(doorAnim) doorAnim.kill();
+              
+              // Reset states
+              gsap.set(doorPanel, { x: 0 });
+              gsap.set(orangeMan, { x: 80 }); // starts off-screen right
+              gsap.set(manArm, { rotation: 0, transformOrigin: "left top" });
+              gsap.set([orangeMan, laundryBasket], { y: 0 });
+              gsap.set(pickupText, { opacity: 0, y: 10 });
+              
+              doorAnim = gsap.timeline()
+                  .to(popup, { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.2)" })
+                  .to(doorPanel, { x: "-100%", duration: 0.5, ease: "power2.inOut" })
+                  .to(orangeMan, { x: 0, duration: 0.4, ease: "power1.out" }, "-=0.2")
+                  .to(manArm, { rotation: -20, duration: 0.2, ease: "power1.inOut" })
+                  .to([orangeMan, laundryBasket], { y: -20, duration: 0.3, ease: "back.out(1.5)" })
+                  .to(pickupText, { opacity: 1, y: 0, duration: 0.3, ease: "power1.out" }, "-=0.1");
+          });
+          
+          pickupCard.addEventListener('mouseleave', () => {
+              if(doorAnim) doorAnim.kill();
+              gsap.to(popup, { y: 30, scale: 0.9, opacity: 0, duration: 0.3, ease: "power2.in" });
+          });
+      }
+
+      // Washer Popup Animation (Process Step)
+      const processCard = document.getElementById('processCard');
+      if (processCard) {
+          const popup = processCard.querySelector('.washer-popup-container');
+          const washerDrum = processCard.querySelector('.washer-drum');
+          const washerWater = processCard.querySelector('.washer-water');
+          const processText = processCard.querySelector('.process-text');
+          
+          let washerAnim;
+          let drumSpin;
+          let waterSlosh;
+          
+          processCard.addEventListener('mouseenter', () => {
+              if(washerAnim) washerAnim.kill();
+              if(drumSpin) drumSpin.kill();
+              if(waterSlosh) waterSlosh.kill();
+              
+              // Reset states
+              gsap.set(processText, { opacity: 0, y: 10 });
+              
+              washerAnim = gsap.timeline()
+                  .to(popup, { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.2)" })
+                  .to(processText, { opacity: 1, y: 0, duration: 0.3, ease: "power1.out" }, "-=0.2");
+                  
+              // Infinite spinning and sloshing
+              drumSpin = gsap.to(washerDrum, { rotation: 360, duration: 0.6, repeat: -1, ease: "linear" });
+              waterSlosh = gsap.to(washerWater, { rotation: 20, y: -5, duration: 0.4, yoyo: true, repeat: -1, ease: "sine.inOut" });
+          });
+          
+          processCard.addEventListener('mouseleave', () => {
+              if(washerAnim) washerAnim.kill();
+              gsap.to(popup, { y: 30, scale: 0.9, opacity: 0, duration: 0.3, ease: "power2.in" });
+              
+              // Smoothly stop the spinning
+              if(drumSpin) drumSpin.kill();
+              if(waterSlosh) waterSlosh.kill();
+              gsap.to(washerDrum, { rotation: "+=180", duration: 1, ease: "power2.out" });
+              gsap.to(washerWater, { rotation: 0, y: 0, duration: 1, ease: "power2.out" });
+          });
+      }
+
+      // Truck Popup Animation (Delivery Step)
+      const deliveryCard = document.getElementById('deliveryCard');
+      if (deliveryCard) {
+          const popup = deliveryCard.querySelector('.truck-popup-container');
+          const truckSvg = deliveryCard.querySelector('.orange-truck-svg');
+          const truckRoad = deliveryCard.querySelector('.truck-road');
+          const exhaustClouds = deliveryCard.querySelectorAll('.cloud');
+          const deliveryText = deliveryCard.querySelector('.delivery-text');
+          
+          let truckAnim;
+          let activeTweens = [];
+          
+          deliveryCard.addEventListener('mouseenter', () => {
+              if(truckAnim) truckAnim.kill();
+              activeTweens.forEach(t => t.kill());
+              activeTweens = [];
+              
+              // Reset states
+              gsap.set(truckRoad, { x: 0 });
+              gsap.set(truckSvg, { x: -150, y: 0 }); // Start completely offscreen left
+              gsap.set(deliveryText, { opacity: 0, y: 10 });
+              gsap.set(exhaustClouds, { opacity: 0, scale: 0.5, x: 0 });
+              
+              truckAnim = gsap.timeline()
+                  .to(popup, { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.2)" })
+                  .to(deliveryText, { opacity: 1, y: 0, duration: 0.3, ease: "power1.out" }, "-=0.2")
+                  .to(truckSvg, { x: 0, duration: 0.6, ease: "back.out(1.1)" }, "-=0.1");
+                  
+              // Infinite driving simulation (bumps)
+              activeTweens.push(gsap.to(truckSvg, { y: -2, duration: 0.1, yoyo: true, repeat: -1, ease: "sine.inOut" }));
+
+              // Continuous Road scrolling
+              activeTweens.push(gsap.to(truckRoad, { x: "-30px", duration: 0.4, repeat: -1, ease: "linear" }));
+
+              // Exhaust puffs timeline
+              const exhaustTl = gsap.timeline({ repeat: -1 });
+              exhaustTl.fromTo(exhaustClouds[0], { opacity: 0.8, scale: 0.5, x: 0 }, { opacity: 0, scale: 1.5, x: -20, duration: 0.6, ease: "power1.out" }, 0)
+                       .fromTo(exhaustClouds[1], { opacity: 0.8, scale: 0.5, x: 0 }, { opacity: 0, scale: 1.5, x: -20, duration: 0.6, ease: "power1.out" }, 0.2)
+                       .fromTo(exhaustClouds[2], { opacity: 0.8, scale: 0.5, x: 0 }, { opacity: 0, scale: 1.5, x: -20, duration: 0.6, ease: "power1.out" }, 0.4);
+              activeTweens.push(exhaustTl);
+          });
+          
+          deliveryCard.addEventListener('mouseleave', () => {
+              if(truckAnim) truckAnim.kill();
+              activeTweens.forEach(t => t.kill());
+              activeTweens = [];
+              
+              gsap.to(popup, { y: 30, scale: 0.9, opacity: 0, duration: 0.3, ease: "power2.in" });
+              gsap.to(truckSvg, { x: 150, duration: 0.5, ease: "power2.in" }); // Zoom off to the right!
+          });
+      }
+
       // Testimonial Slider Logic
       let currentSlide = 0;
       const track = document.getElementById('testi-track');
@@ -2166,6 +2755,15 @@
           onUpdate: function() {
               document.getElementById("city-count").innerText = Math.floor(cityStat.val);
           }
+      });
+
+      // 3. FREE Text fade in
+      gsap.to("#text-free", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          delay: 2.6
       });
 
 // Register ScrollTrigger (Make sure you have the ScrollTrigger CDN linked in your head!)
