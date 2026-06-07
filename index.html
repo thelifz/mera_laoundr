@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <!-- GSAP CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -168,7 +168,7 @@
           Join 5 Lakh+ happy customers today.
         </p>
         <div class="hero__actions">
-          <a href="#book-now" id="hero-book-btn" class="btn btn--book-hero magnetic-btn book-now-trigger">Book Now  </a>
+          <a href="#book-now" id="mainBookBtn" class="btn btn--book-hero magnetic-btn book-now-trigger">Book Now  </a>
           <a href="#learn-more" id="hero-learn-btn" class="btn btn--ghost">Learn More</a>
         </div>
         <div class="hero__stats">
@@ -577,45 +577,411 @@
         .badge-left, .badge-right { display: none; }
     }
 
-    /* Hero Image Arrangement */
+    /* Centers the entire interactive component */
     .hero-image-wrapper {
         position: relative;
         width: 100%;
-        max-width: 550px; /* Keeps the image from getting too massive on wide screens */
+        max-width: 450px; /* Keeps it strictly contained */
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Cleanly stacks and scales the machines */
+    .machine-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: scale(0.85); /* Perfect overall size */
+        transform-origin: bottom center;
+        z-index: 2;
+    }
+
+    /* Pulls the bottom machine up to create that seamless totem-pole look */
+    #washerBottom {
+        margin-top: -40px; 
+        z-index: 1; /* Puts it behind the top machine */
+    }
+
+    #washerTop {
+        z-index: 2;
+        box-shadow: 0 30px 40px rgba(0,0,0,0.1); /* Adds depth so it sits above the bottom one */
+    }
+    
+    /* The Floor Shadow */
+    .hero-shadow {
+        margin-top: 10px;
+        width: 60%;
+        height: 20px;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+    
+    /* Character Layout */
+    .smart-machine-character {
+        position: relative;
+        width: 300px; /* Slightly slimmer, more elegant */
+        height: 360px;
+        margin: 0 auto;
+        z-index: 2;
+    }
+
+    /* The Premium Hardware Body */
+    .machine-body {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+        border-radius: 45px;
+        border: 2px solid #ffffff;
+        box-shadow: -10px -10px 20px rgba(255,255,255,0.8), 
+                    15px 15px 30px rgba(0,0,0,0.08), 
+                    inset 0 -10px 20px rgba(0,0,0,0.03);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 30px;
+    }
+
+    /* Refined Control Panel */
+    .control-panel {
+        width: 60%;
+        height: 12px;
+        background: #e5e7eb;
+        border-radius: 10px;
+        margin-bottom: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .control-panel .light {
+        width: 6px;
+        height: 6px;
+        background: #9CA3AF;
+        border-radius: 50%;
+    }
+    .control-panel .blue-light {
+        background: #38bdf8;
+        box-shadow: 0 0 8px #38bdf8;
+    }
+
+    /* The Glossy OLED Screen */
+    .machine-door {
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle at 50% 30%, #1f2937, #030712);
+        border-radius: 50%;
+        /* Double ring to look like a metallic door frame */
+        border: 6px solid #f9fafb; 
+        box-shadow: 0 0 0 4px #e5e7eb, 
+                    inset 0 10px 20px rgba(0,0,0,0.6), 
+                    0 20px 30px rgba(0,0,0,0.15);
+        position: relative;
+        overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        /* Optional: Adds a soft, glowing backdrop to make the image pop */
-        background: radial-gradient(circle, rgba(232,106,16,0.05) 0%, rgba(255,255,255,0) 70%);
     }
 
-    /* The Antigravity Float */
-    .antigravity-hero-img {
+    /* The Shiny Glass Reflection */
+    .glass-glare {
+        position: absolute;
+        top: 0; left: 10%; right: 10%; height: 45%;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(255,255,255,0));
+        border-radius: 50% 50% 0 0;
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    /* The Face Container */
+    .face-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px; /* Pulls mouth closer to eyes */
+        z-index: 2;
+    }
+
+    /* The Anime Eyes */
+    .eyes {
+        display: flex;
+        gap: 15px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* The White of the Eye */
+    .eye {
+        width: 45px;
+        height: 60px;
+        background: #ffffff; 
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        box-shadow: inset 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    /* The Big Black Pupil */
+    .pupil {
+        width: 35px;
+        height: 45px;
+        background: #000000; 
+        border-radius: 50%;
+        position: relative;
+    }
+
+    /* The Glossy Light Reflections */
+    .glare-large {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        width: 14px;
+        height: 18px;
+        background: #ffffff;
+        border-radius: 50%;
+    }
+
+    .glare-small {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        width: 6px;
+        height: 8px;
+        background: #ffffff;
+        border-radius: 50%;
+    }
+
+    /* Soft Pink Blush */
+    .blush-container {
+        display: flex;
+        gap: 45px;
+        position: absolute;
+        top: 105px;
+        z-index: 1;
+    }
+
+    .blush {
+        width: 25px;
+        height: 12px;
+        background: #ff99aa; /* Soft pink */
+        border-radius: 50%;
+        filter: blur(2px);
+        opacity: 0.8;
+    }
+
+    /* The Fixed, Cleaner Mouth */
+    .mouth {
+        position: absolute;
+        top: 112px; /* Pulled up slightly to sit perfectly below the blush */
+        width: 20px;
+        height: 10px;
+        background: #ff4757; /* Deeper, premium watermelon red */
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 0 10px rgba(255, 71, 87, 0.4);
+        z-index: 2;
+    }
+
+    /* UI/UX Reset: Collapse rogue whitespace */
+    section {
+        overflow-x: hidden; /* Prevents horizontal scrolling bugs */
+    }
+
+    .hero-image-wrapper {
+        height: auto !important; /* Strips out any forced height causing overlap */
+        padding-bottom: 40px;
+    }
+
+    /* The Nuclear Gap Fix */
+    .pricing-section, 
+    #pricing, /* Replace with your actual section ID/Class */
+    .pricing-container {
+        height: auto !important;
+        min-height: auto !important;
+        padding-bottom: 20px !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Pull the We Promise section up */
+    .promise-section,
+    #promise {
+        margin-top: 0 !important;
+        padding-top: 20px !important;
+    }
+
+    /* --- HERO LAYOUT FIXES --- */
+    /* Pushes the Hero Text up to the top */
+    .hero-container, .hero-row { 
+        align-items: flex-start !important; 
+        padding-top: 40px !important; 
+    }
+    
+    /* Pushes the Washing Machines to the far right */
+    .hero-image-wrapper {
+        margin-left: auto !important; 
+        margin-right: 0 !important;
+        transform: scale(0.85); /* Keeps them at a professional size */
+    }
+
+    /* 1. The Sticky Header */
+    header, .navbar {
+        position: sticky !important;
+        top: 0;
+        z-index: 9999;
+        background: #ffffff;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Soft premium shadow */
+    }
+
+    /* 2. Fix the Hero Space */
+    .hero-section, .hero-container {
+        padding-top: 20px !important; /* Pulls everything up */
+        min-height: auto !important;
+    }
+
+    /* 3. The Family Cluster Layout */
+    .machine-cluster {
+        position: relative;
+        width: 320px;
+        height: 320px;
+        margin: 0 auto;
+        transform-origin: bottom center;
+        z-index: 2;
+    }
+
+    .smart-machine-character {
+        position: absolute !important;
+        bottom: 0;
+        transform-origin: bottom center;
+    }
+
+    #washerPapa {
+        left: 20px;
+        transform: scale(1.15);
+        z-index: 1;
+    }
+
+    #washerMama {
+        right: 0px;
+        transform: scale(0.95);
+        z-index: 2;
+    }
+
+    #washerDaughter {
+        right: 60px;
+        transform: scale(0.70);
+        z-index: 3;
+    }
+
+    #washerSon {
+        left: -10px;
+        transform: scale(0.85);
+        z-index: 4;
+    }
+
+    /* The Orange Machine */
+    #washerSon .machine-body {
+        background: linear-gradient(145deg, #FF8A3D, #E86A10) !important;
+    }
+    #washerSon .machine-door {
+        background: #FF9B5A !important;
+        border-color: #C0550B !important;
+    }
+
+    /* The Magnetic Glow Effect for the Button */
+    .btn-glow {
+        box-shadow: 0 0 25px rgba(232, 106, 16, 0.6) !important;
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+    }
+
+    /* The Ultimate White-Out Fix */
+
+    /* --- 1. HERO SECTION RESET --- */
+    /* Contains the machines so they don't bleed into pricing */
+    .hero-section {
+        position: relative;
         width: 100%;
-        height: auto;
-        object-fit: contain;
-        filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.1)); /* Adds realistic depth */
-        animation: antigravityFloat 4s ease-in-out infinite;
+        min-height: auto;
+        padding-top: 40px;
+        padding-bottom: 60px; /* Gives the machines space to breathe at the bottom */
+        background-color: #FFF4EC; /* Your peach brand color */
+        overflow: hidden; /* Prevents anything from spilling out */
     }
 
-    /* The Physics of the Float */
-    @keyframes antigravityFloat {
-        0% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-20px); /* Floats up smoothly */
-        }
-        100% {
-            transform: translateY(0px); /* Settles back down */
-        }
+    .hero-row {
+        display: flex;
+        align-items: center; /* Vertically centers the text with the machines */
+        justify-content: space-between;
+    }
+
+    /* Pushes the machines to the right and scales them safely */
+    .hero-image-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+        transform: scale(0.85); 
+    }
+
+    /* --- 2. PRICING & PROMISE RESET (Nuking the Gaps) --- */
+    /* Forces the background to be pure white and removes rogue margins */
+    .pricing-section, 
+    #pricing {
+        position: relative;
+        width: 100%;
+        background-color: #ffffff !important;
+        margin-top: 0 !important; 
+        margin-bottom: 0 !important;
+        padding-top: 60px; 
+        padding-bottom: 40px;
+    }
+
+    .promise-section,
+    #promise,
+    #we-promise {
+        position: relative;
+        width: 100%;
+        background-color: #ffffff !important;
+        margin-top: 0 !important;
+        padding-top: 20px;
     }
 </style>
 
-<!-- The Antigravity Hero Image Container -->
 <div class="hero-image-wrapper">
-    <img src="antigravity-image.png" alt="Premium Laundry Floating in Zero Gravity" class="antigravity-hero-img">
+    <div class="machine-cluster">
+        
+        <div class="smart-machine-character machine-member" id="washerPapa">
+            <div class="machine-body"><div class="control-panel"><span class="light"></span><span class="light"></span><span class="light blue-light"></span></div>
+                <div class="machine-door"><div class="glass-glare"></div><div class="face-container"><div class="eyes"><div class="eye"><div class="pupil"><div class="glare-large"></div><div class="glare-small"></div></div></div><div class="eye"><div class="pupil"><div class="glare-large"></div><div class="glare-small"></div></div></div></div><div class="blush-container"><div class="blush"></div><div class="blush"></div></div><div class="mouth"></div></div></div>
+            </div>
+        </div>
+
+        <div class="smart-machine-character machine-member" id="washerMama">
+            <div class="machine-body"><div class="control-panel"><span class="light"></span><span class="light"></span><span class="light blue-light"></span></div>
+                <div class="machine-door"><div class="glass-glare"></div><div class="face-container"><div class="eyes"><div class="eye"><div class="pupil"><div class="glare-large"></div><div class="glare-small"></div></div></div><div class="eye"><div class="pupil"><div class="glare-large"></div><div class="glare-small"></div></div></div></div><div class="blush-container"><div class="blush"></div><div class="blush"></div></div><div class="mouth"></div></div></div>
+            </div>
+        </div>
+
+        <div class="smart-machine-character machine-member" id="washerDaughter">
+            <div class="machine-body"><div class="control-panel"><span class="light"></span><span class="light"></span><span class="light blue-light"></span></div>
+                <div class="machine-door"><div class="glass-glare"></div><div class="face-container"><div class="eyes"><div class="eye"><div class="pupil"><div class="glare-large"></div><div class="glare-small"></div></div></div><div class="eye"><div class="pupil"><div class="glare-large"></div><div class="glare-small"></div></div></div></div><div class="blush-container"><div class="blush"></div><div class="blush"></div></div><div class="mouth"></div></div></div>
+            </div>
+        </div>
+
+        <div class="smart-machine-character machine-member theme-orange" id="washerSon">
+            <div class="machine-body"><div class="control-panel"><span class="light"></span><span class="light"></span><span class="light blue-light"></span></div>
+                <div class="machine-door"><div class="glass-glare"></div><div class="face-container"><div class="eyes"><div class="eye"><div class="pupil"><div class="glare-large"></div><div class="glare-small"></div></div></div><div class="eye"><div class="pupil"><div class="glare-large"></div><div class="glare-small"></div></div></div></div><div class="blush-container"><div class="blush"></div><div class="blush"></div></div><div class="mouth"></div></div></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="hero-shadow" id="heroShadow"></div>
 </div>
     </section>
   </div>
@@ -712,7 +1078,7 @@
     }
   </style>
 
-  <section id="pricing-services" style="position: relative; z-index: 10; background-color: #FAFAFA; padding: 80px 5%; min-height: 100vh;">
+  <section id="pricing-services" class="pricing-section" style="position: relative; z-index: 10; background-color: #FAFAFA; padding: 100px 5%; min-height: 100vh;">
     <div style="text-align: center; margin-bottom: 50px;">
         <h2 style="font-size: 32px; color: #1F2937; font-weight: 800; margin-bottom: 10px;">PRICING & SERVICES</h2>
         <div style="width: 60px; height: 4px; background: #E86A10; margin: 0 auto; border-radius: 2px;"></div>
@@ -858,6 +1224,7 @@
         </div>
     </div>
   </section>
+
 
   <style>
     #we-promise {
@@ -1572,53 +1939,6 @@
     });
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Idle Water Animation
-      gsap.to("#wm-water", {x: "20%", borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%", duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut"});
-
-      // Interaction State
-      const container = document.getElementById("wm-container");
-      if (container) {
-        container.addEventListener("click", () => {
-          gsap.to("#led-status", { backgroundColor: "#10B981" });
-          gsap.fromTo("#wm-cloth", {y: -150, opacity: 0}, {y: -30, opacity: 1, duration: 0.8, ease: "bounce.out"});
-          gsap.to("#wm-cloth", {rotation: 360, transformOrigin: "center center", duration: 1.2, repeat: -1, ease: "power1.inOut", delay: 0.8});
-        });
-      }
-      // Number Counter Animation Object
-      let counters = { customers: 0, cities: 0 };
-
-      gsap.to(counters, {
-          customers: 5,
-          cities: 10,
-          duration: 2,
-          ease: "power2.out",
-          onUpdate: function() {
-              document.getElementById("count-customers").innerText = Math.floor(counters.customers);
-              document.getElementById("count-cities").innerText = Math.floor(counters.cities);
-          }
-      });
-
-      // Pop in the "FREE" text right as numbers finish
-      gsap.to("#text-free", {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          delay: 1.5,
-          ease: "back.out(1.5)"
-      });
-
-      // Ensure ScrollTrigger is registered
-      gsap.registerPlugin(ScrollTrigger);
-
-      ScrollTrigger.create({
-          trigger: "#hero-wrapper",
-          start: "top top", // Pin starts when the top of the hero hits the top of the screen
-          endTrigger: "#pricing-services", // Pin ends when the top of the pricing section hits...
-          end: "top top", // ...the top of the screen
-          pin: true,
-          pinSpacing: false // Crucial: Allows the pricing section to scroll OVER the pinned hero
-      });
-
       // The Card Entrance (Uses .to instead of .from to prevent CSS conflicts)
       gsap.to(".service-card", {
           scrollTrigger: {
@@ -2106,6 +2426,108 @@ dryCleanCard.addEventListener('mouseenter', () => {
         dryCleanMovie.restart();
     }
 });
+
+    // 1. BULLETPROOF SCROLLTRIGGER
+    // We look for multiple possible names for your pricing section
+    const pricingTarget = document.querySelector('.pricing-section') || document.querySelector('#pricing') || document.querySelector('.services');
+    
+    if (pricingTarget && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(pricingTarget, {
+            scrollTrigger: {
+                trigger: pricingTarget,
+                start: "top 80%", 
+            },
+            y: 40, opacity: 0, duration: 1, ease: "power3.out"
+        });
+    } else {
+        console.warn("Pricing section not found for scrolling, skipping animation.");
+    }
+
+    // 2. BULLETPROOF MACHINES (FAMILY OF 4)
+    const machines = document.querySelectorAll('.smart-machine-character');
+    
+    // If the machines aren't in the HTML, stop here so we don't crash
+    if (machines.length === 0) {
+        console.warn("Washing machines not found in HTML. Skipping character engine.");
+        return; 
+    }
+
+    const allPupils = document.querySelectorAll('.smart-machine-character .pupil');
+    const allMouths = document.querySelectorAll('.smart-machine-character .mouth');
+    
+    // Finds the book button safely
+    const bookNowBtn = document.getElementById('mainBookBtn') || document.querySelector('.btn');
+
+    let isChatting = false;
+    let chatAnimations = [];
+
+    // 3. THE CONVERSATION LOGIC
+    function startConversation() {
+        isChatting = true;
+        
+        // Eyes lock towards center/up
+        gsap.to(allPupils, { x: 0, y: 15, scale: 1.4, duration: 0.3, ease: "back.out(1.5)" });
+
+        allMouths.forEach((mouth, index) => {
+            let delay = index * 0.05;
+            let duration = 0.12 + (index % 2 * 0.03); // Slight variation
+            let anim = gsap.to(mouth, { height: 28, width: 22, borderRadius: "5px 5px 25px 25px", duration: duration, yoyo: true, repeat: -1, delay: delay });
+            chatAnimations.push(anim);
+        });
+        
+        if(bookNowBtn) bookNowBtn.classList.add('btn-glow');
+    }
+
+    function stopConversation() {
+        isChatting = false;
+        chatAnimations.forEach(anim => anim.kill());
+        chatAnimations = [];
+        
+        gsap.to(allMouths, { height: 10, width: 20, borderRadius: "0 0 20px 20px", duration: 0.2 });
+        if(bookNowBtn) bookNowBtn.classList.remove('btn-glow');
+    }
+
+    if (bookNowBtn) {
+        bookNowBtn.addEventListener('mouseenter', startConversation);
+        bookNowBtn.addEventListener('mouseleave', stopConversation);
+    }
+
+    // 4. DYNAMIC EYE TRACKING
+    window.addEventListener('mousemove', (e) => {
+        if (isChatting) return; 
+
+        let distanceToBtn = 1000; 
+        if (bookNowBtn) {
+            const btnRect = bookNowBtn.getBoundingClientRect();
+            distanceToBtn = Math.hypot(e.clientX - (btnRect.left + btnRect.width / 2), e.clientY - (btnRect.top + btnRect.height / 2));
+        }
+
+        let eyeScale = 1;
+        if (distanceToBtn < 350) {
+            eyeScale = 1 + ((350 - distanceToBtn) / 350) * 0.45;
+        }
+
+        allPupils.forEach(pupil => {
+            const rect = pupil.parentElement.getBoundingClientRect();
+            const angle = Math.atan2(e.clientY - (rect.top + rect.height/2), e.clientX - (rect.left + rect.width/2));
+            
+            gsap.to(pupil, { 
+                x: Math.cos(angle) * 7, 
+                y: Math.sin(angle) * 7, 
+                scale: eyeScale, 
+                duration: 0.1, 
+                ease: "power1.out" 
+            });
+        });
+
+        if (distanceToBtn < 200) {
+            gsap.to(allMouths, { height: 12, width: 12, borderRadius: "50%", duration: 0.2 }); 
+        } else {
+            gsap.to(allMouths, { height: 10, width: 20, borderRadius: "0 0 20px 20px", duration: 0.2 }); 
+        }
+    });
+
     });
   </script>
 <style>
